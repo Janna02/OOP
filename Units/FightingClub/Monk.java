@@ -1,17 +1,21 @@
 package Units.FightingClub;
 
-import java.util.Random;
-
 import Units.AttacksByMagic;
 
 public class Monk extends AttacksByMagic {
 
     public Monk(String name) {
-        super(name, new Random().nextInt(100, 130), 5, new Random().nextInt(10, 30));
+        super(name, 7, -4, -4, 30, 5, 1);
     }
 
     @Override
-    public String getInfo(){
-        return "Монах " + name;
+    public String getInfo() {
+        return "Монах " + name + " (" + "Защита - " + defence + ", Урон - " + minDamage + "-"
+                + maxDamage + ", Здоровье - " + hp + ", Скорость - " + speed + ", Магия - " + magic + ")";
+    }
+
+    @Override
+    public String getInfoOfMoves() {
+        return "Монах " + name + " (" + "Скорость - " + speed + ", Здоровье - " + hp + ")";
     }
 }

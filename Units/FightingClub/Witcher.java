@@ -1,17 +1,21 @@
 package Units.FightingClub;
 
-import java.util.Random;
-
 import Units.AttacksByMagic;
 
 public class Witcher extends AttacksByMagic {
 
     public Witcher(String name) {
-        super(name, new Random().nextInt(100, 150), 5, new Random().nextInt(10, 30));
+        super(name, 12, -5, -5, 30, 9, 1);
     }
 
     @Override
-    public String getInfo(){
-        return "Колдун " + name;
+    public String getInfo() {
+        return "Колдун " + name + " (" + "Защита - " + defence + ", Урон - " + minDamage + "-"
+                + maxDamage + ", Здоровье - " + hp + ", Скорость - " + speed + ", Магия - " + magic + ")";
+    }
+
+    @Override
+    public String getInfoOfMoves() {
+        return "Колдун " + name + " (" + "Скорость - " + speed + ", Здоровье - " + hp + ")";
     }
 }

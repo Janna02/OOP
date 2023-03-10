@@ -1,16 +1,20 @@
 package Units;
+
 import java.util.Random;
 
 public abstract class BaseUnit implements StepsInfo {
 
     protected String name;
-    protected int hp, maxHp, attack, def;
+    protected int defence, minDamage, maxDamage, hp, maxHp, speed;
 
-    public BaseUnit(String name, int hp, int def) {
+    public BaseUnit(String name, int defence, int minDamage, int maxDamage, int hp, int speed) {
         this.name = name;
+        this.defence = defence;
+        this.minDamage = minDamage;
+        this.maxDamage = maxDamage;
         this.hp = hp;
         this.maxHp = hp;
-        this.def = def;
+        this.speed = speed;
     }
 
     public static String getName() {
@@ -21,14 +25,12 @@ public abstract class BaseUnit implements StepsInfo {
         return hp;
     }
 
-    public int getAttack() {
-        return attack;
+    public int getSpeed() {
+        return speed;
     }
 
-    public void GetDamage(int damage) {
-        if (this.hp - damage > 0) {
-            this.hp -= damage;
-        }
+    public String getInfoOfMoves() {
+        return "";
     }
 
     @Override
@@ -38,6 +40,12 @@ public abstract class BaseUnit implements StepsInfo {
     @Override
     public String getInfo() {
         return "null";
+    }
+
+    public void GetDamage(int damage) {
+        if (this.hp - damage > 0) {
+            this.hp -= damage;
+        }
     }
 
 }

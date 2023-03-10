@@ -1,18 +1,22 @@
 package Units.FightingClub;
 
-import java.util.Random;
-
 import Units.FightingClubUnits;
 
 public class LanceKnight extends FightingClubUnits {
 
     public LanceKnight(String name) {
-        super(name, new Random().nextInt(180, 200), 10, new Random().nextInt(10, 20));
+        super(name, 5, 1, 3, 10, 4, 4);
     }
 
     @Override
     public String getInfo() {
-        return "Копейщик " + name;
+        return "Копейщик " + name + " (" + "Атака - " + attack + ", Защита - " + defence + ", Урон - " + minDamage + "-"
+                + maxDamage + ", Здоровье - " + hp + ", Скорость - " + speed + ")";
+    }
+
+    @Override
+    public String getInfoOfMoves() {
+        return "Копейщик " + name + " (" + "Скорость - " + speed + ", Здоровье - " + hp + ")";
     }
 
 }

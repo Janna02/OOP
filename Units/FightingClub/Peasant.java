@@ -1,17 +1,21 @@
 package Units.FightingClub;
 
-import java.util.Random;
+import Units.FightingClubUnits;
 
-import Units.BaseUnit;
-
-public class Peasant extends BaseUnit {
+public class Peasant extends FightingClubUnits {
 
     public Peasant(String name) {
-        super(name, new Random().nextInt(100, 120), 5);
+        super(name, 1, 1, 1, 1, 3, 1);
     }
 
     @Override
-    public String getInfo(){
-        return "Крестьянин " + name;
+    public String getInfo() {
+        return "Крестьянин " + name + " (" + "Атака - " + attack + ", Защита - " + defence + ", Урон - " + minDamage
+                + "-" + maxDamage + ", Здоровье - " + hp + ", Скорость - " + speed;
+    }
+
+    @Override
+    public String getInfoOfMoves() {
+        return "Крестьянин " + name + " (" + "Скорость - " + speed + ", Здоровье - " + hp + ")";
     }
 }
