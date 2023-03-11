@@ -16,23 +16,23 @@ import Units.FightingClub.*;
 
 public class GameSortOf {
     public static void main(String[] args) {
-        ArrayList<BaseUnit> TeamFirst = new ArrayList<>();
-        ArrayList<BaseUnit> TeamSecond = new ArrayList<>();
-        ArrayList<BaseUnit> Moves = new ArrayList<>();
+        ArrayList<BaseUnit> teamFirst = new ArrayList<>();
+        ArrayList<BaseUnit> teamSecond = new ArrayList<>();
+        ArrayList<BaseUnit> moves = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
             switch (new Random().nextInt(4)) {
                 case 0:
-                    TeamFirst.add(new LanceKnight(LanceKnight.getName()));
+                    teamFirst.add(new LanceKnight(LanceKnight.getName()));
                     break;
                 case 1:
-                    TeamFirst.add(new CrossBowman(CrossBowman.getName()));
+                    teamFirst.add(new CrossBowman(CrossBowman.getName()));
                     break;
                 case 2:
-                    TeamFirst.add(new Monk(Monk.getName()));
+                    teamFirst.add(new Monk(Monk.getName()));
                     break;
                 case 3:
-                    TeamFirst.add(new Peasant(Peasant.getName()));
+                    teamFirst.add(new Peasant(Peasant.getName()));
                     break;
                 default:
                     break;
@@ -42,16 +42,16 @@ public class GameSortOf {
         for (int i = 0; i < 10; i++) {
             switch (new Random().nextInt(4)) {
                 case 0:
-                    TeamSecond.add(new Rogue(Rogue.getName()));
+                    teamSecond.add(new Rogue(Rogue.getName()));
                     break;
                 case 1:
-                    TeamSecond.add(new Sniper(Sniper.getName()));
+                    teamSecond.add(new Sniper(Sniper.getName()));
                     break;
                 case 2:
-                    TeamSecond.add(new Witcher(Witcher.getName()));
+                    teamSecond.add(new Witcher(Witcher.getName()));
                     break;
                 case 3:
-                    TeamSecond.add(new Peasant(Peasant.getName()));
+                    teamSecond.add(new Peasant(Peasant.getName()));
                     break;
                 default:
                     break;
@@ -59,17 +59,17 @@ public class GameSortOf {
         }
 
         System.out.println("Первая команда:");
-        TeamFirst.forEach(n -> System.out.println(n.getInfo()));
+        teamFirst.forEach(n -> System.out.println(n.getInfo()));
         System.out.println("____________________________________________");
 
         System.out.println("Вторая команда:");
-        TeamSecond.forEach(n -> System.out.println(n.getInfo()));
+        teamSecond.forEach(n -> System.out.println(n.getInfo()));
         System.out.println("_____________________________________________");
 
-        Moves.addAll(TeamFirst);
-        Moves.addAll(TeamSecond);
+        moves.addAll(teamFirst);
+        moves.addAll(teamSecond);
 
-        Moves.sort(new Comparator<BaseUnit>() {
+        moves.sort(new Comparator<BaseUnit>() {
 
             @Override
             public int compare(BaseUnit hero1, BaseUnit hero2) {
@@ -82,7 +82,7 @@ public class GameSortOf {
         });
 
         System.out.println("Ходы игроков:");
-        Moves.forEach(n -> System.out.println(n.getInfoOfMoves()));
+        moves.forEach(n -> System.out.println(n.getInfoOfMoves()));
     }
 
 }
