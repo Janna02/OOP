@@ -4,19 +4,14 @@ import Units.AttacksOnDistance;
 
 public class CrossBowman extends AttacksOnDistance {
 
-    public CrossBowman(String name) {
-        super(name, 3, 2, 3, 10, 4, 6, 16);
+    public CrossBowman(String name, int coordinateX, int coordinateY) {
+        super(name, 6, 3, 2, 3, 10, 4, 16, coordinateX, coordinateY);
     }
 
     @Override
     public String getInfo() {
-        return "Арбалетчик " + name + " (" + "Атака - " + attack + ", Защита - " + defence + ", Дальность выстрела - "
-                + shots + ", Урон - " + minDamage + "-" + maxDamage + ", Здоровье - " + hp + ", Скорость - " + speed
-                + ")";
-    }
-
-    @Override
-    public String getInfoOfMoves() {
-        return "Арбалетчик " + name + " (" + "Скорость - " + speed + ", Здоровье - " + hp + ")";
+        return String.format("%7S %10s %13s %7s %3d %10s %3d %7s %2d %2d %10s %3d %10s %3d %10s %3d",
+        state, "Арбалетчик", name, "Атака:", attack, "Защита:", defence, "Урон:", minDamage, maxDamage, "Здоровье:", hp,
+        "Скорость:", speed, "Снарядов:", ammunition);
     }
 }

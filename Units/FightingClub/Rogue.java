@@ -1,11 +1,11 @@
 package Units.FightingClub;
 
-import Units.FightingClubUnits;
+import Units.BaseUnit;
 
-public class Rogue extends FightingClubUnits {
+public class Rogue extends BaseUnit {
 
-    public Rogue(String name) {
-        super(name, 3, 2, 4, 10, 6, 8);
+    public Rogue(String name, int coordinateX, int coordinateY) {
+        super(name, 8, 3, 2, 4, 10, 6, coordinateX, coordinateY);
     }
 
     @Override
@@ -13,10 +13,4 @@ public class Rogue extends FightingClubUnits {
         return "Бандит " + name + " (" + "Атака - " + attack + ", Защита - " + defence + ", Урон - " + minDamage + "-"
                 + maxDamage + ", Здоровье - " + hp + ", Скорость - " + speed + ")";
     }
-
-    @Override
-    public String getInfoOfMoves() {
-        return "Бандит " + name + " (" + "Скорость - " + speed  + ", Здоровье - " + hp + ")";
-    }
-
 }
