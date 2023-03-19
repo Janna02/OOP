@@ -8,9 +8,9 @@ public class AttacksByMagic extends BaseUnit {
 
     public AttacksByMagic(String name, int attack, int defense, int minDamage, int maxDamage, int hp, int speed,
             int mana,
-            int pointX,
-            int pointY) {
-        super(name, attack, defense, minDamage, maxDamage, hp, speed, pointX, pointY);
+            int coordinateX,
+            int coordinateY) {
+        super(name, attack, defense, minDamage, maxDamage, hp, speed, coordinateX, coordinateY);
         this.mana = mana;
     }
 
