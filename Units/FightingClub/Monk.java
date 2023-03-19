@@ -15,4 +15,9 @@ public class Monk extends AttacksByMagic {
                 hp,
                 "Скорость:", speed, "Мана:", mana);
     }
+
+    @Override
+    public String getClassUnit() {
+        return "Монах";
+    }
 }

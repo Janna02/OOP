@@ -15,4 +15,9 @@ public class Sniper extends AttacksOnDistance {
                 "Здоровье:", hp,
                 "Скорость:", speed, "Снарядов:", ammunition);
     }
+
+    @Override
+    public String getClassUnit() {
+        return "Снайпер";
+    }
 }

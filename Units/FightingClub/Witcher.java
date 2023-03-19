@@ -15,4 +15,9 @@ public class Witcher extends AttacksByMagic {
                 hp,
                 "Скорость:", speed, "Мана:", mana);
     }
+
+    @Override
+    public String getClassUnit() {
+        return "Волшебник";
+    }
 }

@@ -14,16 +14,24 @@ public class AttacksByMagic extends BaseUnit {
         this.mana = mana;
     }
 
+    public String toString() {
+        return name +
+                " Health:" + Math.round(hp) +
+                " Defence:" + defence +
+                " Attack:" + attack +
+                " Damage:" + Math.round(Math.abs((minDamage + maxDamage) / 2)) +
+                " Coordinates:" + coordinates.x + "." + coordinates.y +
+                " Mana:" + mana;
+    }
+
     @Override
-    public void step(ArrayList<BaseUnit> whiteRock, ArrayList<BaseUnit> blackRock) {
+    public boolean step(ArrayList<BaseUnit> whiteRock, ArrayList<BaseUnit> blackRock) {
         if (state.equals("Die") || mana <= 0)
-            return;
+            return false;
         BaseUnit target = findMostWounded(whiteRock);
         target.getDamage(minDamage);
         mana--;
-
-        if (mana <= 0)
-            mana += 5;
+        return true;
     }
 
     protected BaseUnit findMostWounded(ArrayList<BaseUnit> whiteRock) {

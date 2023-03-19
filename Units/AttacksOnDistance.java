@@ -14,19 +14,32 @@ public abstract class AttacksOnDistance extends BaseUnit {
     }
 
     @Override
-    public void step(ArrayList<BaseUnit> whiteRock, ArrayList<BaseUnit> blackRock) {
-        if (state.equals("Die") || (ammunition == 0))
-            return;
+    public String toString() {
+        return name +
+                " Health:" + Math.round(hp) +
+                " Defence:" + defence +
+                " Attack:" + attack +
+                " Damage:" + Math.round(Math.abs((minDamage + maxDamage) / 2)) +
+                " Coordinates:" + coordinates.x + "." + coordinates.y +
+                " Ammo: " + ammunition;
+    }
+
+    @Override
+    public boolean step(ArrayList<BaseUnit> whiteRock, ArrayList<BaseUnit> blackRock) {
+        if (state.equals("Die") || ammunition == 0)
+            return false;
         BaseUnit target = blackRock.get(findWhoClose(blackRock));
         float damage = (target.defence - attack) > 0 ? minDamage
                 : (target.defence - attack) < 0 ? maxDamage : (minDamage + maxDamage) / 2;
         target.getDamage(damage);
-        for (BaseUnit unit : whiteRock) {
-            if (unit.getInfo().split(" ")[0].equals("Крестьянин") && unit.state.equals("DoNothing"))
-                ;
-            unit.state = "Busy";
-            return;
+        for (BaseUnit hero : whiteRock) {
+            if (hero.getClassUnit().equals("Крестьянин") && hero.state.equals("DoesNothing")) {
+                hero.state = "Busy";
+                ammunition++;
+                break;
+            }
         }
         ammunition--;
+        return true;
     }
 }

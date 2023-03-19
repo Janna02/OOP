@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
@@ -9,42 +10,63 @@ import Units.FightingClub.*;
 public class GameSortOf {
 
     static final int UNITS = 10;
+    public static ArrayList<BaseUnit> white = new ArrayList<>();
+    public static ArrayList<BaseUnit> black = new ArrayList<>();
+    public static ArrayList<BaseUnit> both = new ArrayList<>();
 
     public static void main(String[] args) {
 
         Scanner user_input = new Scanner(System.in);
+        System.out.print("Нажмите 'Enter' для старта игры:");
+        user_input.nextLine();
 
-        ArrayList<BaseUnit> teamWhiteRock = new ArrayList<>();
-        ArrayList<BaseUnit> teamBlackRock = new ArrayList<>();
-        ArrayList<BaseUnit> togetherTwoTeams = new ArrayList<>();
+        createNewTeam(white, 0, 1);
+        createNewTeam(black, 3, 10);
 
-        createNewTeam(teamWhiteRock, 0, 1);
-        createNewTeam(teamBlackRock, 3, 10);
+        both.addAll(white);
+        both.addAll(black);
 
-        togetherTwoTeams.addAll(teamWhiteRock);
-        togetherTwoTeams.addAll(teamBlackRock);
-
-        sortNewTeam(togetherTwoTeams);
+        sortNewTeam(both);
 
         System.out.println("Первая команда:");
-        showNewTeam(teamWhiteRock);
+        showNewTeam(white);
 
         System.out.println("Вторая команда:");
-        showNewTeam(teamBlackRock);
+        showNewTeam(black);
 
         System.out.println("Битва:");
-        String stop = "";
-        while (stop.equals("")) {
-            for (BaseUnit hero : togetherTwoTeams) {
-                if (teamWhiteRock.contains(hero))
-                    hero.step(teamWhiteRock, teamBlackRock);
-                else
-                    hero.step(teamBlackRock, teamWhiteRock);
+
+        int countWhite = 0;
+        int countBlack = 0;
+        while (true) {
+            ConsoleView.view();
+            user_input.nextLine();
+            countWhite = 0;
+            countBlack = 0;
+
+            for (BaseUnit unit : both) {
+                if (white.contains(unit)) {
+                    if (unit.step(white, black) == true)
+                        unit.step(white, black);
+                    else
+                        countWhite++;
+                } else {
+                    if (unit.step(black, white) == true)
+                        unit.step(black, white);
+                    else
+                        countBlack++;
+                }
             }
-            showNewTeam(togetherTwoTeams);
-            stop = user_input.nextLine();
-            user_input.close();
+            if (countWhite == UNITS || countBlack == UNITS) {
+                break;
+            }
         }
+
+        if (countWhite == UNITS)
+            System.out.println("Победили черные");
+        else
+            System.out.println("Победили белые");
+        user_input.close();
     }
 
     static void showNewTeam(ArrayList<BaseUnit> team) {
@@ -93,9 +115,6 @@ public class GameSortOf {
                     break;
             }
         }
-    }    
-            
-}       
+    }
 
-
-
+}

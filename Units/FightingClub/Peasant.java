@@ -21,8 +21,26 @@ public class Peasant extends BaseUnit {
     }
 
     @Override
-    public void step(ArrayList<BaseUnit> whiteRock, ArrayList<BaseUnit> blackRock) {
-        if (!state.equals("Die"))
+    public String toString() {
+        return state + " " +
+                getClassUnit() + " " +
+                name +
+                " Health:" + Math.round(hp) +
+                " Defence:" + defence +
+                " Coordinates:" + coordinates.x + "." + coordinates.y;
+    }
+
+    @Override
+    public boolean step(ArrayList<BaseUnit> whiteRock, ArrayList<BaseUnit> blackRock) {
+        if (!state.equals("Die")) {
             state = "DoesNothing";
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String getClassUnit() {
+        return "Крестьянин";
     }
 }
