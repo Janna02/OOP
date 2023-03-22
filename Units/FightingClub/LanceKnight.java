@@ -32,8 +32,13 @@ public class LanceKnight extends BaseUnit {
         BaseUnit target = blackRock.get(findWhoClose(blackRock));
 
         if (target.coordinates.getDistance(coordinates) < 2) {
-            float damage = (target.defence - attack) > 0 ? minDamage
-                    : (target.defence - attack) < 0 ? maxDamage : (minDamage + maxDamage) / 2;
+            float damage = 0;
+            if (target.defence - attack > 0)
+                damage = minDamage;
+            else if (target.defence - attack < 0)
+                damage = maxDamage;
+            else
+                damage = (minDamage + maxDamage) / 2;
             target.getDamage(damage);
         } else {
             Coordinates tempvc = coordinates.chooseWay(target.coordinates);

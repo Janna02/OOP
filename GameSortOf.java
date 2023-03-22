@@ -46,14 +46,10 @@ public class GameSortOf {
 
             for (BaseUnit unit : both) {
                 if (white.contains(unit)) {
-                    if (unit.step(white, black) == true)
-                        unit.step(white, black);
-                    else
+                    if (unit.step(white, black) == false)
                         countWhite++;
                 } else {
-                    if (unit.step(black, white) == true)
-                        unit.step(black, white);
-                    else
+                    if (unit.step(black, white) == false)
                         countBlack++;
                 }
             }
@@ -61,7 +57,7 @@ public class GameSortOf {
                 break;
             }
         }
-
+        ConsoleView.view();
         if (countWhite == UNITS)
             System.out.println("Победили черные");
         else

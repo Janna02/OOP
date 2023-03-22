@@ -26,11 +26,13 @@ public class AttacksByMagic extends BaseUnit {
 
     @Override
     public boolean step(ArrayList<BaseUnit> whiteRock, ArrayList<BaseUnit> blackRock) {
-        if (state.equals("Die") || mana <= 0)
+        if (state.equals("Die"))
             return false;
-        BaseUnit target = findMostWounded(whiteRock);
-        target.getDamage(minDamage);
-        mana--;
+        if (mana > 0) {
+            BaseUnit target = findMostWounded(whiteRock);
+            target.getDamage(minDamage);
+            mana--;
+        }
         return true;
     }
 

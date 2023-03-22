@@ -32,11 +32,10 @@ public class Peasant extends BaseUnit {
 
     @Override
     public boolean step(ArrayList<BaseUnit> whiteRock, ArrayList<BaseUnit> blackRock) {
-        if (!state.equals("Die")) {
-            state = "DoesNothing";
+        if (state.equals("Die"))
+            return false;
+        else
             return true;
-        }
-        return false;
     }
 
     @Override
